@@ -1,0 +1,54 @@
+<div class="pai-nav-top">
+    <ul class="top-left">
+        <li class="nav-icon"></li>
+        <li>
+            <a href="http://www.lagou.com/app/download.html" class="lagou-app">拉勾APP</a>
+        </li> <em></em>
+        <li>
+            <a href="http://pai.lagou.com/switchUserType.html?type=1">我要招人</a>
+        </li>
+    </ul>
+    <!-- C端 -->
+    <ul class="top-right">
+    <?php if(session('?user')):?>
+        <li>
+            <a href="http://www.lagou.com/resume/myresume.html">我的简历</a>
+        </li> <em></em>
+        <li>
+            <a href="http://www.lagou.com/mycenter/delivery.html">投递箱</a>
+        </li>
+        <em></em>
+        <li>
+            <a href="http://www.lagou.com/mycenter/collections.html">收藏夹</a>
+        </li>
+        <em></em>
+        <li class="nav-user" id="nav-user-li" >
+            <a href="javascript:;" id="nav-users">{:session('user')['username']}</a>
+            <span style=''></span>
+            <ul class="nav-select" style='z-index:999;'>
+                <li>
+                    <a href="http://www.lagou.com/s/subscribe.html">我的订阅</a>
+                </li>
+                <li>
+                    <a href="http://pai.lagou.com/frontLogout.do" id='logouta' style="margin-bottom: 10px;">退出</a>
+                    <script type="text/javascript">
+                        $('#logouta').click(function(){
+                            $.post('{:U("Home/Login/logout")}',{},function(data){
+                                window.location.reload();
+                            });
+                            return false;
+                        });
+                    </script>    
+                </li>
+            </ul>
+        </li>
+        <?php else : ?>
+        <li>
+            <a href="http://www.lagou.com/app/download.html" class="lagou-app">拉勾APP</a>
+        </li> <em></em>
+        <li>
+            <a href="http://pai.lagou.com/switchUserType.html?type=1">我要招人</a>
+        </li>
+    <?php endif ?>
+    </ul>
+</div>
